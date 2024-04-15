@@ -39,7 +39,7 @@
           type: iso
           iso_path: '{{ item.iso_filename }}'
       loop:
-      - { vmname: "{{ student_ID + '-Router'}}", guest_id: debian10_64Guest, cpus: 2, nested: false, memory: 2048,  disk_gb: 10, iso_filename : "{{ iso_folder }}"+'vyos-1.5-rolling-202404010021-amd64.iso' }
+      - { vmname: "{{ student_ID + '-Router'}}", guest_id: debian10_64Guest, cpus: 2, nested: false, memory: 2048,  disk_gb: 10, iso_filename : "{{ iso_folder +'vyos-1.5-rolling-202404010021-amd64.iso' }}" }
       delegate_to: localhost
       register: deploy_vm
 
