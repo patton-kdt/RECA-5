@@ -1,0 +1,28 @@
+ansible_python_interpreter: /bin/python3
+
+student_ID: "S00"
+
+vcenter_hostname: "vcsa.vclass.reca5"
+vcenter_username: "S00@vclass.reca5"
+vcenter_password: "VMware1!"
+
+datacenter_name: "RECA5"
+
+folder_prefix: "RECA5/vm/3.Students/"
+
+# S01, S06, S11, S16 --> esxi_host : esxi-01.vclass.reca5
+# S02, S07, S12, S17 --> esxi_host : esxi-02.vclass.reca5
+# S03, S08, S13,     --> esxi_host : esxi-03.vclass.reca5
+# S04, S09, S14,     --> esxi_host : esxi-04.vclass.reca5
+# S05, S10, S15, S00 --> esxi_host : esxi-05.vclass.reca5
+
+esxi_hostname: "esxi-05.vclass.reca5"
+esxi_password: "VMware1!"
+esxi_username: "root"
+
+public_net: "Net-192.168.3.x"
+private_net: "{{ student_ID + '-Trunk' }}"
+
+datastore_name: "Local-ESXi-05"
+
+iso_folder: "{{ '[' + datastore_name + ']\ISOs\' }}"
