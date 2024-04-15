@@ -25,4 +25,4 @@ private_net: "{{ student_ID + '-Trunk' }}"
 
 datastore_name: "Local-ESXi-05"
 
-iso_folder: "{{ '[' + datastore_name + ']\ISOs\' }}"
+iso_folder: "[{{ datastore_name }}]\\ISOs\\"
