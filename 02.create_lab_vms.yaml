@@ -186,6 +186,6 @@
           type: iso
           iso_path: '{{ item.iso_filename }}'
       loop:
-      - { vmname: "{{ student_ID + '-WinTemp'}}", guest_id: windows2019srvNext_64Gues, cpus: 4, nested: false, memory: 8192,  iso_filename : "{{ iso_folder + 'ko-kr_windows_server_2022_updated_march_2024_x64_dvd_f6700d18.iso' }}" }
+      - { vmname: "{{ student_ID + '-WinTemp'}}", guest_id: windows2019srvNext_64Guest, cpus: 4, nested: false, memory: 8192,  iso_filename : "{{ iso_folder + 'ko-kr_windows_server_2022_updated_march_2024_x64_dvd_f6700d18.iso' }}" }
       delegate_to: localhost
       register: deploy_vm      
