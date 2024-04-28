@@ -1,0 +1,44 @@
+## 기존에 사용하던 Windows Template를 이용해서 신규 VM만들기
+## https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html
+
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
+    gather_facts: no
+    esxi_hostname: "172.16.1.15"
+    esxi_username: "root"
+    esxi_password: "VMware1!"
+    project_id: "P00"
+
+  tasks:
+  - name: 04. Deploy Jumpbox from Template
+    community.vmware.vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: no
+      name: 
+      state: "poweredon"
+      datacenter: '{{ datacenter_name }}'
+      folder: 
+      esxi_hostname: '{{ esxi_hostname }}'
+      datastore: "{{ datastore_name }}"
+      template: 
+      networks:
+      - name: "{{ student_ID + '-SA-Mgmt' }}"
+        label: "Network adapter 1"
+        connected: True
+        start_connected: True
+        ip: 10.10.10.2
+        netmask: 255.255.255.0
+        gateway: 10.10.10.1
+        dns_servers: 172.16.1.2
+        type: static
+      customization:
+        password: VMware1!
+        hostname: dc
+      wait_for_customization: yes
+      wait_for_customization_timeout: 360
+    delegate_to: localhost
+    ignore_errors: yes     
