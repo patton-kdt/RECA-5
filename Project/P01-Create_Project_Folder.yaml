@@ -1,0 +1,23 @@
+## vcsa.vclass.reca5 -> RECA5 -> 4.Projects 폴더 하위에 나만의 kubernetes 프로젝트 폴더 만들기
+## https://docs.ansible.com/ansible/latest/collections/community/vmware/vcenter_folder_module.html
+
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
+    gather_facts: no
+    vcenter_hostname: 
+    vcenter_username: 
+    vcenter_password: 
+    datacenter_name: 
+    project_id: 
+    parent_folder: 
+
+  tasks: 
+  - name: 01. Create a Project folder
+    community.vmware.vcenter_folder:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      validate_certs: false
+
