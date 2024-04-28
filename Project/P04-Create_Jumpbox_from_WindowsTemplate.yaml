@@ -6,10 +6,6 @@
   vars:
     ansible_python_interpreter: /bin/python3
     gather_facts: no
-    esxi_hostname: "172.16.1.15"
-    esxi_username: "root"
-    esxi_password: "VMware1!"
-    project_id: "P00"
 
   tasks:
   - name: 04. Deploy Jumpbox from Template
@@ -26,18 +22,18 @@
       datastore: "{{ datastore_name }}"
       template: 
       networks:
-      - name: "{{ student_ID + '-SA-Mgmt' }}"
+      - name: 
         label: "Network adapter 1"
         connected: True
         start_connected: True
-        ip: 10.10.10.2
-        netmask: 255.255.255.0
-        gateway: 10.10.10.1
-        dns_servers: 172.16.1.2
+        ip: 
+        netmask: 
+        gateway: 
+        dns_servers: 
         type: static
       customization:
         password: VMware1!
-        hostname: dc
+        hostname: 
       wait_for_customization: yes
       wait_for_customization_timeout: 360
     delegate_to: localhost
