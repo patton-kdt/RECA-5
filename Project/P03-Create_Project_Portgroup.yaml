@@ -1,0 +1,21 @@
+## 2단계에서 생성된 가상 스위치에 프로젝트를 위한 포트그룹 생성하기
+## https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_portgroup_module.html
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
+    gather_facts: no
+    esxi_hostname:
+    esxi_username:
+    esxi_password:
+    project_id:
+    project_pg:
+
+tasks: 
+- name: 03. Adding Kubernetes Portgroup
+  community.vmware.vmware_portgroup:
+    hostname: "{{ esxi_hostname }}"
+    username: "{{ esxi_username }}"
+    password: "{{ esxi_password }}"
+    validate_certs: false
+
