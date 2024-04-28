@@ -1,0 +1,24 @@
+## 프로젝트를 위한 스위치 만들기
+## https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_vswitch_module.html
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
+    gather_facts: no
+    esxi_hostname: 
+    esxi_username: 
+    esxi_password: 
+    project_id: 
+
+  tasks: 
+  - name: 02. Create Project Standard vSwitch
+    community.vmware.vmware_vswitch:
+      hostname: '{{ esxi_hostname }}'
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      validate_certs: false
+
+  - name: waiting vswitch creating
+    wait_for:
+      timeout: 10
+    delegate_to: localhost
