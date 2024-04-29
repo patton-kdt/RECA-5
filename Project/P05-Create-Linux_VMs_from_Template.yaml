@@ -1,0 +1,42 @@
+## 기존에 사용하던 Windows Template를 이용해서 신규 VM만들기
+## https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html
+
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /bin/python3
+    gather_facts: no
+
+  tasks:
+  - name: 05. Deploy Linux VMs  from Template
+    community.vmware.vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: no
+      name: '{{ item.vmname }}'
+      state: "poweredon"
+      datacenter: '{{ datacenter_name }}'
+      folder: 
+      esxi_hostname: '{{ esxi_hostname }}'
+      datastore: "{{ datastore_name }}"
+      template: 
+      networks:
+      - name: 
+        label: "Network adapter 1"
+        connected: True
+        start_connected: True
+        ip: 
+        netmask: 
+        gateway: 
+        dns_servers: 
+        type: static
+      customization:
+        password: VMware1!
+        hostname: 
+      wait_for_customization: yes
+      wait_for_customization_timeout: 360
+    loop: 
+    - { vmname: 
+    delegate_to: localhost
+    ignore_errors: yes     
