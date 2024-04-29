@@ -37,6 +37,6 @@
       wait_for_customization: yes
       wait_for_customization_timeout: 360
     loop: 
-    - { vmname:    ip:  hostname: }
+    - { vmname:    , ip:  , hostname: }
     delegate_to: localhost
     ignore_errors: yes     
