@@ -1,13 +1,13 @@
 $domainName = "vclass.local"
 
 # 정방향 조회 도메인 만들기 
-# Add-DnsServerPrimaryZone -Name $domainname -ZoneFile "$domainName.dns"
+Add-DnsServerPrimaryZone -Name $domainname -ZoneFile "$domainName.dns"
 
 # 역방향 조회 도메인 만들기 
-Add-DnsServerPrimaryZone -NetworkID 10.10.13.0/24 -ZoneFile "13.10.10.in-addr.arpa.dns"
+Add-DnsServerPrimaryZone -NetworkID 172.16.0.0/24 -ZoneFile "0.16.172.in-addr.arpa.dns"
 
 # DNS 포워딩 
-# Add-DnsServerForwarder -IPAddress 192.168.3.3 -PassThru
+Add-DnsServerForwarder -IPAddress 192.168.3.3 -PassThru
 
 # csv 파일로부터, 레코드 정보 읽기 
 $csvFile = "C:\Code\dns_record.csv"
