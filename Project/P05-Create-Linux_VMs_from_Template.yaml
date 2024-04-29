@@ -1,4 +1,4 @@
-## 기존에 사용하던 Windows Template를 이용해서 신규 VM만들기
+## 각각의 ESXi 서버에 존재하는 Temp-Rokcy-0? Template를 이용해서 다수의 Linux VM만들기
 ## https://docs.ansible.com/ansible/latest/collections/community/vmware/vmware_guest_module.html
 
 ---
